@@ -2,32 +2,70 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+:root{
+    --boxShadowWidth:25px
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+body{
+    background-color: black;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.um-gradient-text {
+    background: -webkit-linear-gradient(45deg, rgb(59, 14, 242), rgb(136, 0, 209));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.customForm {
+    border: 2px solid;
+    border-image: linear-gradient(45deg, rgb(59, 14, 242), rgb(136, 0, 209)) 1;
+    border-radius: 14px;
+    box-shadow: 0 0 var(--boxShadowWidth) 0 rgba(59, 14, 242, 0.7), 0 0 var(--boxShadowWidth) 0 rgba(136, 0, 209, 0.7);
+    animation: changeGradient 7s infinite alternate, changeShadow 7s infinite alternate;
+}
+
+
+@keyframes changeGradient {
+    0% {
+        border-image: linear-gradient(45deg, rgb(59, 14, 242), rgb(136, 0, 209)) 1;
+    }
+    50% {
+        border-image: linear-gradient(45deg, rgb(242, 14, 14), rgb(0, 136, 209)) 1;
+    }
+    100% {
+        border-image: linear-gradient(45deg, rgb(59, 242, 14), rgb(209, 0, 136)) 1;
+    }
+}
+
+@keyframes changeShadow {
+    0% {
+        box-shadow: 0 0 var(--boxShadowWidth) 0 rgba(59, 14, 242, 0.7), 0 0 var(--boxShadowWidth) 0 rgba(136, 0, 209, 0.7);
+    }
+    50% {
+        box-shadow: 0 0 var(--boxShadowWidth) 0 rgba(242, 14, 14, 0.7), 0 0 var(--boxShadowWidth) 0 rgba(0, 136, 209, 0.7);
+    }
+    100% {
+        box-shadow: 0 0 var(--boxShadowWidth) 0 rgba(59, 242, 14, 0.7), 0 0 var(--boxShadowWidth) 0 rgba(209, 0, 136, 0.7);
+    }
+}
+
+
+input:focus{
+    outline: none;
+}
+
+.card{
+    min-height: 200px;
+}
+.overlay{
+    background-color: rgba(31, 22, 22, 0.644);
+}
+
+.overlayItem{
+    box-shadow:
+      0 0 30px #7b0fff,   /* Main glowing shadow */
+      0 0 60px #7b0fff,   /* Medium glow */
+      0 0 90px #7b0fff,   /* Slight outer glow */
+      0 0 120px #7b0fff;  /* Outermost glow */
+
 }
