@@ -30,9 +30,10 @@ const Main = ({ params }) => {
     }
   },[popup])
 
-  function downloadAudio(id){
-    const url = `https://apidl.net/api/button/mp3?url=https://www.youtube.com/watch?v=${id}`;
-    setUrl(url);
+  function downloadAudio(id,digit){
+    const url = [`https://apidl.net/api/button/mp3?url=https://www.youtube.com/watch?v=${id}`,
+    `https://apidl.net/api/button/mp3?url=https://www.youtube.com/watch?v=${id}`];
+    setUrl(url[digit]);
     setPopup(true)
   }
   return (
@@ -69,13 +70,14 @@ const Main = ({ params }) => {
               <div>
                 <button className='w-full p-3 border border-solid 
                     border-myPurple text-myPurple rounded font-bold hover:text-white hover:bg-myPurple'
-                    onClick={()=>downloadAudio(element.videoId)}>Download</button>
+                    onClick={()=>downloadAudio(element.videoId,0)}>Download</button>
               </div>
               <div className="flex items-center space-x-2">
                 <button className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black">Play</button>
                 <button className="text-white bg-black w-1/2 p-2 border border-solic 
-                    rounded hover:border-black hover:bg-white hover:text-black">More</button>
+                    rounded hover:border-black hover:bg-white hover:text-black"
+                    onClick={()=>downloadAudio(element.videoId,1)}>More</button>
               </div>
             </div>
           </div>
