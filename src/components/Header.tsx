@@ -8,7 +8,7 @@ const Headerz = () => {
                 <h1 className='text-white font-extrabold'>MP3JUICEZ</h1>
             </div>
             <div className="flex items-center space-x-4 text-white">
-                <a href="" className='hover:text-myPurple transition-all duration-300'>Home</a>
+                {/* <a href="" className='hover:text-myPurple transition-all duration-300'>Home</a> */}
                 <a href="" className='border border-solid border-white 
                 hover:border-myPurple hover:text-myPurple px-2 py-2 rounded
                 transition-all duration-300'>Github</a>
