@@ -10,7 +10,9 @@ const Landing = () => {
                     <h1 className="text-white text-3xl md:text-6xl font-extrabold">In Seconds</h1>
                     <h5 className="text-myGrey md:text-2xl">Give it a try right below, without having to sign up!</h5>
                 </div>
+                <div className="mt-24">
                 <Form value={""}/>
+                </div>
             </div>
         </section>
     )

@@ -19,7 +19,7 @@ const Form = ({ value }: Props) => {
     }
 
     return (
-        <div className="mt-24 flex items-center justify-center">
+        <div className="flex items-center justify-center">
             <form className="customForm w-3/4 p-2 flex items-center space-x-2" onSubmit={searchSong}>
                 <input
                     type="text"

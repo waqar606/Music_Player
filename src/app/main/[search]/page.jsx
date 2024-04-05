@@ -47,7 +47,7 @@ const Main = ({ params }) => {
     </div>
     </div>
      :''} 
-    <div className="">
+    <div className="pt-12">
       <Form value={params.search}/>
     </div>
 

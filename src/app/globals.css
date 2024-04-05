@@ -64,7 +64,6 @@ input:focus{
 }
 .overlay{
     background-color: rgba(31, 22, 22, 0.644);
-    margin-top: -95px;
 }
 
 .overlayItem{
