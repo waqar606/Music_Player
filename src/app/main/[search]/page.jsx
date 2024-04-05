@@ -32,7 +32,7 @@ const Main = ({ params }) => {
 
   function downloadAudio(id,digit){
     const url = [`https://apidl.net/api/button/mp3?url=https://www.youtube.com/watch?v=${id}`,
-    `https://www.yt2mp3s.me/api/single/mp3?url=https://www.youtube.com/watch?v=${id}`];
+    `https://www.yt2mp3s.me/api/widget?url=https://www.youtube.com/watch?v=${id}`];
     setUrl(url[digit]);
     setPopup(true)
   }
@@ -43,9 +43,9 @@ const Main = ({ params }) => {
     </div>
     {popup ? 
     <div className='absolute z-2 overlay h-full w-full flex items-center justify-center' onClick={() => setPopup(false)}>
-    <div class="overlayItem w-4/5 bg-white px-1">
+    <div class="overlayItem w-4/5 h-1/2 bg-white px-1">
       <p className='text-black mt-4 ms-3 me-3'>Choose any download option (192kpbs recommended)</p>
-      <iframe src={url} frameborder="0" className=' w-full'
+      <iframe src={url} frameborder="0" className=' w-full h-full'
     sandbox="allow-forms allow-modals allow-pointer-lock  allow-same-origin allow-scripts allow-top-navigation allow-downloads"></iframe>
     </div>
     </div>
