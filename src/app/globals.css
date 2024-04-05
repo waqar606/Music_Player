@@ -5,9 +5,14 @@
 :root{
     --boxShadowWidth:25px
 }
+html,body{
+    padding: 0;
+    margin: 0;
+}
 
 body{
     background-color: black;
+    height: 100vh;
 }
 
 .um-gradient-text {
@@ -59,6 +64,7 @@ input:focus{
 }
 .overlay{
     background-color: rgba(31, 22, 22, 0.644);
+    margin-top: -95px;
 }
 
 .overlayItem{
@@ -67,5 +73,5 @@ input:focus{
       0 0 60px #7b0fff,   /* Medium glow */
       0 0 90px #7b0fff,   /* Slight outer glow */
       0 0 120px #7b0fff;  /* Outermost glow */
-
+    overflow:auto;
 }
