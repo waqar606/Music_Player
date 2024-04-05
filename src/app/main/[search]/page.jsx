@@ -32,7 +32,7 @@ const Main = ({ params }) => {
 
   function downloadAudio(id,digit){
     const url = [`https://apidl.net/api/button/mp3?url=https://www.youtube.com/watch?v=${id}`,
-    `https://apidl.net/api/button/mp3?url=https://www.youtube.com/watch?v=${id}`];
+    `https://www.yt2mp3s.me/api/single/mp3?url=https://www.youtube.com/watch?v=${id}`];
     setUrl(url[digit]);
     setPopup(true)
   }
