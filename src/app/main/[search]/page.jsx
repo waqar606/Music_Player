@@ -7,7 +7,7 @@ const Main = ({ params }) => {
   const [dataG, setData] = useState();
   const [url, setUrl] = useState('');
   const [popup, setPopup] = useState(false);
-  const iRef = useRef()
+  const [popup2, setPopup2] = useState(false);
   useEffect(() => {
     const fetchResult = async () => {
       //USING API (THAT USES YTMUSICAPI LIBRARY) BUILT WITHIN NEXTJS 
@@ -33,10 +33,10 @@ const Main = ({ params }) => {
     }
   }, [popup])
 
-  function downloadAudio(id, digit) {
+  function moreDownloadAudio(id, digit) {
     const url = [
-      `https://apidl.net/api/widget?url=https://www.youtube.com/watch?v=${id}`,
       `https://www.yt2mp3s.me/api/widget?url=https://www.youtube.com/watch?v=${id}`,
+      `https://apidl.net/api/widget?url=https://www.youtube.com/watch?v=${id}`,
   ];
     setUrl(url[digit]);
     setPopup(true);
@@ -58,14 +58,44 @@ const Main = ({ params }) => {
     }, 5000);
   }
 
+  async function downloadAudio(id,title) {
+    setPopup2(true);
+    try {
+      const response = await fetch(`/api/download?q=${id}`);
+      if (!response.ok) {
+        throw new Error('Failed to download audio');
+      }
+      const blob = await response.blob();
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${title}.mp3`;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+    } catch (error) {
+      console.log(error);
+    }
+    setPopup2(false);
+  }
+  
+
   return (
     <>
       {popup ?
-        <div className='absolute z-2 overlay w-full h-full flex items-center justify-center' onClick={() => setPopup(false)}>
-          <div class="overlayItem w-4/5 h-3/4 bg-white px-1" id='overlay'>
+        <div className='fixed z-2 overlay w-full h-full flex items-center justify-center' onClick={() => setPopup(false)}>
+          <div className="overlayItem w-4/5 h-3/4 bg-white px-1" id='overlay'>
             <p className='text-black mt-4 ms-3 me-3'>Choose any download option (192kpbs recommended)</p>
-            <iframe src={url} frameborder="0" className=' w-full h-full' ref={iRef}
+            <iframe src={url} frameborder="0" className=' w-full h-full' 
               sandbox="allow-forms allow-modals allow-pointer-lock  allow-same-origin allow-scripts allow-top-navigation allow-downloads"></iframe>
+          </div>
+        </div>
+        : ''}
+
+      {popup2 ?
+        <div className='fixed z-2 overlay w-full h-full flex items-center justify-center'>
+          <div className="overlayItem w-4/5 h-2/3  bg-white p-6 flex items-center justify-center" id='overlay'>
+            <h1 className='text-black text-center font-extrabold'>DOWNLOADING PLEASE WAIT</h1>
           </div>
         </div>
         : ''}
@@ -92,14 +122,14 @@ const Main = ({ params }) => {
                 <div>
                   <button className='w-full p-3 border border-solid 
                     border-myPurple text-myPurple rounded font-bold hover:text-white hover:bg-myPurple'
-                    onClick={() => downloadAudio(element.videoId, 0)}>Download</button>
+                    onClick={() => downloadAudio(element.videoId,element.title )}>Download</button>
                 </div>
                 <div className="flex items-center space-x-2">
                   <button className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black">Play</button>
                   <button className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black"
-                    onClick={() => downloadAudio(element.videoId, 1)}>More</button>
+                    onClick={() => moreDownloadAudio(element.videoId, 0)}>More</button>
                 </div>
               </div>
             </div>
