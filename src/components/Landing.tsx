@@ -15,6 +15,7 @@ const Landing = () => {
                 </div>
             </div>
         </section>
+        
     )
 }
 

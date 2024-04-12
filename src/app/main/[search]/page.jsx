@@ -8,6 +8,7 @@ const Main = ({ params }) => {
   const [url, setUrl] = useState('');
   const [popup, setPopup] = useState(false);
   const [popup2, setPopup2] = useState(false);
+  const [erro,setE] = useState(false)
   useEffect(() => {
     const fetchResult = async () => {
       //USING API (THAT USES YTMUSICAPI LIBRARY) BUILT WITHIN NEXTJS 
@@ -17,6 +18,8 @@ const Main = ({ params }) => {
       const result = await data.json();
       if(result.status=='success'){
         setData(result.data);
+      }else if(result.status=='failed'){
+        setE(true)
       }
     }
     fetchResult()
@@ -103,6 +106,7 @@ const Main = ({ params }) => {
         <Form value={params.search} />
       </div>
 
+      {!erro ? <>
       <div className='container mt-8 px-16 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 rounded-md
     lg:gap-8
     '>
@@ -138,6 +142,8 @@ const Main = ({ params }) => {
           <div className='text-white'>loading</div>
         }
       </div>
+        </>
+        : <div className='flex items-center justify-center text-white w-full mt-10'>Theres an issue with the app please try again later..</div>}
     </>
   );
 
