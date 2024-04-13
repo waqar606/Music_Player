@@ -4,14 +4,15 @@ import Footer from "@/components/Footer";
 import Headerz from "@/components/Header";
 import Landing from "@/components/Landing";
 
-import React from 'react'
+import React, { useState } from 'react'
 
 const page = () => {
+    const [showSugg,setShowSugg] = useState(false)
     return (
         <>
             <Headerz />
-            <Landing />
-            <Features/>
+            <Landing showSugg={showSugg} setShowSugg={setShowSugg}/>
+            <Features setShowSugg={setShowSugg}/>
             <Footer/>
         </>
     )

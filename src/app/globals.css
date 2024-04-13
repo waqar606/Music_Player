@@ -101,3 +101,7 @@ input:focus{
     border-radius: 10px;
     background: #7b0fff; 
 }
+
+.border-b-2{
+    border-bottom-width: 1px;
+}

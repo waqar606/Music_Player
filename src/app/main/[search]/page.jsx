@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import Form from '@/components/Form'
 
 const Main = ({ params }) => {
+  const [showSugg,setShowSugg] = useState(false)
   const [dataG, setData] = useState();
   const [url, setUrl] = useState('');
   const [popup, setPopup] = useState(false);
@@ -56,9 +57,6 @@ const Main = ({ params }) => {
       overContain.append(p)
       overContain.append(iframe)
     }
-    setTimeout(() => {
-      console.log(iframe.contentWindow)
-    }, 5000);
   }
 
   async function downloadAudio(id,title) {
@@ -82,6 +80,9 @@ const Main = ({ params }) => {
     setPopup2(false);
   }
   
+  function handleClickFOrDropDown(){
+    setShowSugg(false)
+  }
 
   return (
     <>
@@ -103,13 +104,13 @@ const Main = ({ params }) => {
         </div>
         : ''}
       <div className="pt-12">
-        <Form value={params.search} />
+        <Form value={params.search} showSugg={showSugg} setShowSugg={setShowSugg} />
       </div>
 
       {!erro ? <>
       <div className='container mt-8 px-16 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 rounded-md
     lg:gap-8
-    '>
+    ' onClick={handleClickFOrDropDown}>
         {dataG ?
           dataG.map((element, index) => (
             <div key={element.videoId} className='card bg-newGrey flex flex-col justify-between p-4'>

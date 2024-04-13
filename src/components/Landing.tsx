@@ -1,8 +1,8 @@
 import Form from "./Form";
 
-const Landing = () => {
+const Landing = ({ showSugg, setShowSugg }: { showSugg: any; setShowSugg: any; }) => {
     return (
-        <section>
+        <section onClick={()=>setShowSugg(false)}>
             <div className="container mx-auto py-28">
                 <div className='text-center space-y-3 px-3  md:px-0'>
                     <h1 className="text-white text-3xl md:text-6xl font-extrabold">Listen to</h1>
@@ -11,7 +11,7 @@ const Landing = () => {
                     <h5 className="text-myGrey md:text-2xl">Give it a try right below, without having to sign up!</h5>
                 </div>
                 <div className="mt-24">
-                <Form value={""}/>
+                <Form value={""} showSugg={showSugg} setShowSugg={setShowSugg}/>
                 </div>
             </div>
         </section>
