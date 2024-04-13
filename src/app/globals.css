@@ -105,3 +105,6 @@ input:focus{
 .border-b-2{
     border-bottom-width: 1px;
 }
+.dropz{
+    box-shadow: 0 0 10px 5px white;
+}

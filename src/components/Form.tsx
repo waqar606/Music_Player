@@ -65,11 +65,11 @@ const Form = ({ value, showSugg, setShowSugg  }:Props) => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 {suggDisplay ?
-                <div className="absolute  md:px-0 w-full" style={{ overflow: 'auto', top:'40px', left: 0 }} 
+                <div className="absolute md:px-0 w-full" style={{ overflow: 'auto', top:'40px', left: '0'}} 
                 >
-                    <div className=" flex flex-col w-full md:w-3/4 px-1 bg-black" >
+                    <div className=" flex flex-col w-full md:w-3/4 px-1 bg-black dropz" >
                         {sugg.map((each, index) =>
-                            <div key={index} className='bg-black text-white hover:bg-myGrey border-b-2 border-myGrey'  
+                            <div key={index} className='bg-black text-white hover:bg-myGrey border-b-2 border-myGrey '  
                             onClick={(e) => { e.stopPropagation(); clickedSuggestion(each); }}>
                                 <p className='ps-3' style={{cursor:'pointer'}}>{each}</p>
                             </div>
