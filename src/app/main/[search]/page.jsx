@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react'
 import Form from '@/components/Form'
+import Link from 'next/link'
 
 const Main = ({ params }) => {
   const [showSugg,setShowSugg] = useState(false)
@@ -103,6 +104,7 @@ const Main = ({ params }) => {
           </div>
         </div>
         : ''}
+
       <div className="pt-12">
         <Form value={params.search} showSugg={showSugg} setShowSugg={setShowSugg} />
       </div>
@@ -131,7 +133,9 @@ const Main = ({ params }) => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <button className="text-white bg-black w-1/2 p-2 border border-solic 
-                    rounded hover:border-black hover:bg-white hover:text-black">Play</button>
+                    rounded hover:border-black hover:bg-white hover:text-black">
+                      <Link href={`/play/${element.videoId}`}>Play</Link>
+                    </button>
                   <button className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black"
                     onClick={() => moreDownloadAudio(element.videoId, 0)}>More</button>

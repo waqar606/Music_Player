@@ -20,6 +20,5 @@ export async function GET(request: Request, response: Response) {
   });
 }
 
-// z8M8YZj71NM
 
 
