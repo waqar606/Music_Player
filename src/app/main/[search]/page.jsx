@@ -134,7 +134,8 @@ const Main = ({ params }) => {
                 <div className="flex items-center space-x-2">
                   <button className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black">
-                      <Link href={`/play/${element.videoId}`}>Play</Link>
+                      {/* <Link href={`/play/${element.videoId}`}>Play</Link> */}
+                      <a href={`/play/${element.videoId}`} target="_blank">Play</a>
                     </button>
                   <button className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black"
