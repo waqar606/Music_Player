@@ -133,7 +133,7 @@ const Main = ({ params }) => {
                   </div>
                   <div className="flex items-center space-x-2">
                     <a href={`/play/${element.videoId}`} target="_blank" className="text-white bg-black w-1/2 p-2 border border-solic 
-                    rounded hover:border-black hover:bg-white hover:text-black">
+                    rounded hover:border-black hover:bg-white hover:text-black text-center">
                       Play
                     </a>
                     <button className="text-white bg-black w-1/2 p-2 border border-solic 
