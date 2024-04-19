@@ -132,11 +132,11 @@ const Main = ({ params }) => {
                     onClick={() => downloadAudio(element.videoId,element.title )}>Download</button>
                 </div>
                 <div className="flex items-center space-x-2">
+                  <a href={`/play/${element.videoId}`} target="_blank">
                   <button className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black">
-                      {/* <Link href={`/play/${element.videoId}`}>Play</Link> */}
-                      <a href={`/play/${element.videoId}`} target="_blank">Play</a>
                     </button>
+                      </a>
                   <button className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black"
                     onClick={() => moreDownloadAudio(element.videoId, 0)}>More</button>
