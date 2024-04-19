@@ -135,6 +135,7 @@ const Main = ({ params }) => {
                   <a href={`/play/${element.videoId}`} target="_blank">
                   <button className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black">
+                      Play
                     </button>
                       </a>
                   <button className="text-white bg-black w-1/2 p-2 border border-solic 
