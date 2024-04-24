@@ -357,8 +357,12 @@ html{
   color: black;
 }
 .player-holder{
+  padding: 0 3%;
+  height: 95vh;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
 }
 .play_button{
   color: white;
@@ -392,6 +396,8 @@ html{
 .player-controllers-holder{
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 10px;
 }
 .player-controllers{
   color: white;
@@ -402,6 +408,10 @@ html{
   align-items: center;
   height: 40px;
   width: 40px;
+}
+.player-controllers-1{
+  height: 60px;
+  width: 60px;
 }
 .current-time{
   color: white;
@@ -417,22 +427,6 @@ html{
 }
 .duration{
   width: 80%;
-}
-@media only screen and (max-width:600px){
-  .volume{
-    width: 40%;
-  }
-  .duration{
-    width: 100%;
-  }
-  .test{
-    display: none;
-  }
-}
-@media only screen and (max-width:500px){
-  .volume{
-    width: 20%;
-  }
 }
 
 input[type="range"] {
@@ -487,4 +481,125 @@ input[type=range]::-webkit-slider-runnable-track  {
 .yus{
   color: white;
   -webkit-text-stroke: 1px black;
+}
+
+
+
+
+#spans{
+  white-space: nowrap;
+}
+
+#spans span{
+  white-space: nowrap;
+  width:20px;
+
+  height:30px;
+
+  margin-left: 1px;
+
+  background-color: #ACF;
+
+  display: inline-block;
+
+  transform-style:preserve-3d;
+
+  animation: music 1.5s infinite ease-in-out;
+
+}
+
+#spans span:nth-of-type(2){
+
+  animation-delay: 0.2s;    
+
+}
+
+#spans span:nth-of-type(3){
+
+  animation-delay: .4s;
+
+}
+
+#spans span:nth-of-type(4){
+
+  animation-delay: .6s;
+
+}
+
+#spans span:nth-of-type(5){
+
+  animation-delay:.8s;
+
+}
+
+#spans span:nth-of-type(6){
+
+  animation-delay:1s;
+
+}
+
+#spans span:nth-of-type(7){
+
+  animation-delay:1.2s;
+
+}
+
+#spans span:nth-of-type(8){
+
+  animation-delay:1.4s;
+
+}
+
+#spans span:nth-of-type(9){
+
+  animation-delay:1.6s;
+
+}
+
+#spans span:last-of-type{
+
+  animation-delay: 1.8s;
+
+}
+
+@keyframes music{
+
+  0%{
+
+      height: 50px;
+
+      background-color: #135;
+
+  }
+
+  
+
+  25%{
+
+  height:75px;
+
+  transform:translateZ(30px);
+
+  background-color: #963;
+
+  }
+
+  
+
+  50%{
+
+      height: 100px;
+
+      background-color: #246;
+
+}
+
+  75%{
+
+      background-color: #135;
+
+}
+
+      
+
 }

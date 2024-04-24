@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Form from '@/components/Form'
 import Link from 'next/link'
+import MusicAnimation from '@/components/MusicAnimation'
 
 const Main = ({ params }) => {
   const [showSugg, setShowSugg] = useState(false)
@@ -144,7 +145,7 @@ const Main = ({ params }) => {
               </div>
             ))
             :
-            <div className='text-white'>loading</div>
+            <MusicAnimation/>
           }
         </div>
       </>

@@ -1,3 +1,5 @@
+import MusicAnimation from "@/components/MusicAnimation";
+
 export default function Loading() {
-    return <p className="text-white">Loading...</p>
+    return <MusicAnimation/>
   }

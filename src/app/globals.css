@@ -108,3 +108,136 @@ input:focus{
 .dropz{
     box-shadow: 0 0 10px 5px white;
 }
+
+
+.loading
+{
+width: 100px;
+height: 50px;
+position: relative;
+margin: 50px auto;
+}
+.loading span
+{
+width: 10px;
+height: 20px;
+bottom: 0;
+position: absolute;
+display: block;
+background-color: #800068;
+-webkit-animation:Audio 1s  infinite  linear;
+-moz-animation:Audio 1s  infinite  linear;
+-o-animation:Audio 1s  infinite  linear;
+animation:Audio 1s  infinite  linear;
+}
+
+.loading span:nth-of-type(2)
+{
+left: 15px;
+-webkit-animation-delay: .2s;
+-moz-animation-delay: .2s;
+-o-animation-delay: .2s;
+animation-delay: .2s;
+  
+}
+.loading span:nth-of-type(3)
+{
+left: 30px;
+-webkit-animation-delay: .4s;
+-moz-animation-delay: .4s;
+-o-animation-delay: .4s;
+animation-delay: .4s;
+}
+.loading span:nth-of-type(4)
+{
+left: 45px;
+-webkit-animation-delay: .6s;
+-moz-animation-delay: .6s;
+-o-animation-delay: .6s;
+animation-delay: .6s;
+}
+.loading span:nth-of-type(5)
+{
+left: 60px;
+-webkit-animation-delay: .8s;
+-moz-animation-delay: .8s;
+-o-animation-delay: .8s;
+animation-delay: .8s;
+}
+
+-webkit-@keyframes Audio
+{
+    0% ,50%,100%
+{
+height: 20px;
+transform: translateY();
+background-color: #d711f5;
+box-shadow: 20px 0 3px rgba(0,0,0,0.2);
+}
+25%
+{
+height: 80px;
+transform: translateY(20px);
+background-color: #5616e7;
+box-shadow: 20px 0 3px rgba(0,0,0,0.3);
+}
+  
+}
+-moz-@keyframes Audio
+{
+    0% ,50%,100%
+{
+height: 20px;
+transform: translateY();
+background-color: #d711f5;
+box-shadow: 20px 0 3px rgba(0,0,0,0.2);
+}
+25%
+{
+height: 80px;
+transform: translateY(20px);
+background-color: #5616e7;
+box-shadow: 20px 0 3px rgba(0,0,0,0.3);
+}
+  
+}
+-o-@keyframes Audio
+{
+    0% ,50%,100%
+{
+height: 20px;
+transform: translateY();
+background-color: #d711f5;
+box-shadow: 20px 0 3px rgba(0,0,0,0.2);
+}
+25%
+{
+height: 80px;
+transform: translateY(20px);
+background-color: #5616e7;
+box-shadow: 20px 0 3px rgba(0,0,0,0.3);
+}
+  
+}
+@keyframes Audio
+{
+    0% ,50%,100%
+{
+height: 20px;
+transform: translateY();
+background-color: #d711f5;
+box-shadow: 20px 0 3px rgba(0,0,0,0.2);
+}
+25%
+{
+height: 80px;
+transform: translateY(20px);
+background-color: #5616e7;
+box-shadow: 20px 0 3px rgba(0,0,0,0.3);
+}
+  
+}
+/*End Wave Audio Loading*/
+
+
+

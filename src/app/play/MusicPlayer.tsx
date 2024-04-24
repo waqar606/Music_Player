@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faPause, faVolumeUp, faVolumeDown } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faVolumeUp, faVolumeDown, faForward, faBackward } from '@fortawesome/free-solid-svg-icons';
 import '@/app/musicplayer.css'
+import MusicAnimation from '@/components/MusicAnimation';
+import MusicPlayAnima from '@/components/MusicPlayAnima';
+
 
 interface MusicPlayerProps {
   audioURL: string;
@@ -79,12 +82,28 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioURL }) => {
     }
   };
 
+  const forwardSong = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime += 5;
+    }
+  };
+
+  const backwardSong = () => {
+    if (audioRef.current) {
+      audioRef.current.currentTime -= 5;
+    }
+  };
+
   return (
     <>
       {!audioURL ? (
         <div className='empty'>Please search and select a song first to play</div>
       ) : (
         <div className='player-holder'>
+          {isPlaying ? (
+            <MusicPlayAnima />
+          ) : ('')}
+          <div id="container"></div>
           <audio
             autoPlay
             ref={audioRef}
@@ -93,14 +112,22 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioURL }) => {
           />
           <div className='player-controls'>
             <div className='player-controllers-holder'>
-              <a onClick={handlePlayPause} className='player-controllers'>
+            <a onClick={backwardSong} className='player-controllers'>
+                <FontAwesomeIcon icon={faBackward} />
+              </a>
+              <a onClick={handlePlayPause} className='player-controllers player-controllers-1'>
                 {isPlaying ? (
                   <FontAwesomeIcon icon={faPause} />
                 ) : (
                   <FontAwesomeIcon icon={faPlay} />
                 )}
               </a>
+              <a onClick={forwardSong} className='player-controllers '>
+                <FontAwesomeIcon icon={faForward} />
+              </a>
             </div>
+          </div>
+          <div className='player-controls'>
             <a onClick={mute} className='player-controllers'>
               {volume > 20 ? (
                 <FontAwesomeIcon icon={faVolumeUp} />

@@ -1,5 +1,6 @@
 'use client'
 import MusicPlayer from '@/app/play/MusicPlayer'
+import MusicAnimation from '@/components/MusicAnimation'
 import React, { useEffect, useState } from 'react'
 
 const page = ({ params } : {params : any}) => {
@@ -32,7 +33,7 @@ const page = ({ params } : {params : any}) => {
                 <MusicPlayer audioURL={audioURL}/>
             </div> :
                 <div className='text-white'>
-                    {failuer ? 'Video not available to play' : 'Loading'}
+                    {failuer ? 'Video not available to play' : <MusicAnimation/>}
                 </div>}
         </ div>
     )
