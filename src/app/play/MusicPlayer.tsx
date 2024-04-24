@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay,faPause,faVolumeUp,faVolumeDown } from '@fortawesome/free-solid-svg-icons';
+import { faPlay, faPause, faVolumeUp, faVolumeDown } from '@fortawesome/free-solid-svg-icons';
 import '@/app/musicplayer.css'
 
 interface MusicPlayerProps {
@@ -86,7 +86,7 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioURL }) => {
       ) : (
         <div className='player-holder'>
           <audio
-          autoPlay
+            autoPlay
             ref={audioRef}
             src={audioURL}
             onTimeUpdate={handleTimeUpdate}
@@ -95,29 +95,17 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioURL }) => {
             <div className='player-controllers-holder'>
               <a onClick={handlePlayPause} className='player-controllers'>
                 {isPlaying ? (
-                  <FontAwesomeIcon icon={faPause}/>
+                  <FontAwesomeIcon icon={faPause} />
                 ) : (
-                  <FontAwesomeIcon icon={faPlay}/>
+                  <FontAwesomeIcon icon={faPlay} />
                 )}
               </a>
             </div>
-            <div className='jojo'>
-              <span className='current-time'>{formatTime(currentTime)}</span>
-              <input
-                type='range'
-                className='duration'
-                min={0}
-                max={100}
-                value={progress}
-                onChange={handleProgressBarChange}
-              />
-              <span className='current-time'>{formatTime(duration)}</span>
-            </div>
             <a onClick={mute} className='player-controllers'>
               {volume > 20 ? (
-                <FontAwesomeIcon icon={faVolumeUp}/>
+                <FontAwesomeIcon icon={faVolumeUp} />
               ) : (
-                <FontAwesomeIcon icon={faVolumeDown}/>
+                <FontAwesomeIcon icon={faVolumeDown} />
               )}
             </a>
             <input
@@ -128,6 +116,18 @@ const MusicPlayer: React.FC<MusicPlayerProps> = ({ audioURL }) => {
               value={volume}
               onChange={handleVolumeChange}
             />
+          </div>
+          <div className='jojo'>
+            <span className='current-time'>{formatTime(currentTime)}</span>
+            <input
+              type='range'
+              className='duration'
+              min={0}
+              max={100}
+              value={progress}
+              onChange={handleProgressBarChange}
+            />
+            <span className='current-time'>{formatTime(duration)}</span>
           </div>
         </div>
       )}
