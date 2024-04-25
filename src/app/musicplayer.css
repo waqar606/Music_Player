@@ -358,7 +358,6 @@ html{
 }
 .player-holder{
   padding: 0 3%;
-  height: 95vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
