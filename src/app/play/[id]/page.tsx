@@ -39,7 +39,7 @@ const page = ({ params } : {params : any}) => {
     return (
         <div className='bg-black container mx-auto text-white'>
             {!loading ? 
-            <div className='flex flex-col justify-between h-screen py-24'>
+            <div className='flex flex-col justify-between h-screen' style={{padding:'0 6%'}}>
                 <div>
                     <p className='italic mx-10' >You are currently listening</p>
                 <h1 className="text-white font-extrabold mx-10 mt-2 text-3xl">{search1}</h1>
