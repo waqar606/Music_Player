@@ -43,7 +43,7 @@ const page = ({ params } : {params : any}) => {
                 <div>
                     <p className='italic mx-10' >You are currently listening</p>
                 <h1 className="text-white font-extrabold mx-10 mt-2 text-3xl">{search1}</h1>
-                <p className="mt-5 italic mx-10">By</p>
+                <p className="mt-5 italic mx-10">Uploaded By</p>
                 <p className="text-white mx-10 text-3xl">{search2}</p>
                 </div>
                 <MusicPlayer audioURL={audioURL}/>
