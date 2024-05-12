@@ -22,3 +22,4 @@ export async function GET(request:Request){
         return new Response('Method Not Allowed', { status: 405 });
       }
 }
+

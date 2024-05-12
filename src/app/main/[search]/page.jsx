@@ -11,17 +11,20 @@ const Main = ({ params }) => {
   const [url, setUrl] = useState('');
   const [popup, setPopup] = useState(false);
   const [popup2, setPopup2] = useState(false);
-  const [erro, setE] = useState(false)
+  const [erro, setE] = useState(false);
   useEffect(() => {
     const fetchResult = async () => {
       //USING API (THAT USES YTMUSICAPI LIBRARY) BUILT WITHIN NEXTJS 
       // const data = await fetch(`/api/search?q=${params.search}`);
       // USING YMUSIC LIBRARY
-      const data = await fetch(`https://ytmusic.vercel.app/search?name=${params.search}`);
-      const result = await data.json();
-      if (result.status == 'success') {
-        setData(result.data);
-      } else if (result.status == 'failed') {
+      // const data = await fetch(`https://ytmusic.vercel.app/search?name=${params.search}`);
+      try {
+        // const data = await fetch(`https://www.googleapis.com/youtube/v3/search?q=${params.search}&key=AIzaSyChrZ70P-sNP6WlmzbPdkiWQmWCj7b_7HE&part=snippet&type=video&maxResults=10`)
+        const data = await fetch(`https://www.googleapis.com/youtube/v3/search?q=${params.search}&key=${process.env.customKey}&part=snippet&type=video&maxResults=10`)
+        const result = await data.json();
+        console.log(result.items);
+        setData(result.items);
+      } catch (error) {
         setE(true)
       }
     }
@@ -116,14 +119,15 @@ const Main = ({ params }) => {
     ' onClick={handleClickFOrDropDown}>
           {dataG ?
             dataG.map((element, index) => (
-              <div key={element.videoId} className='card bg-newGrey flex flex-col justify-between p-4'>
+              <div key={element.id.videoId} className='card bg-newGrey flex flex-col justify-between p-4'>
                 <div>
                   <div className=''>
-                    <img src={element.thumbnail} alt="Image Preview Unavailable" className='rounded-md w-full text-white' />
+                    <img src={element.snippet.thumbnails.high ? element.snippet.thumbnails.high.url : (element.snippet.thumbnails.medium ? element.snippet.thumbnails.medium.url : element.snippet.thumbnails.default.url)} 
+                    alt="Image Preview Unavailable" className='rounded-md w-full text-white' />
                   </div>
                   <div>
-                    <h1 className='text-white font-extrabold titleH1'>{element.title}</h1>
-                    <p className="text-myGrey">{element.channelTitle}</p>
+                    <h1 className='text-white font-extrabold titleH1'>{element.snippet.title}</h1>
+                    <p className="text-myGrey">{element.snippet.channelTitle}</p>
                   </div>
                 </div>
                 <div className='flex flex-col space-y-2'>

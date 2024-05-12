@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: false
+    reactStrictMode: false,
+    env:{
+        customKey:process.env.YOUTUBE_API_KEY,
+    }
 };
 
 export default nextConfig;
