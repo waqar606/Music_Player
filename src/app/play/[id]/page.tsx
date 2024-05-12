@@ -19,7 +19,7 @@ const page = ({ params } : {params : any}) => {
     const [failuer,setFailure] = useState(false)
     const [audioURL, setAudioURL] = useState('')
     async function fetchPlaybackUrl() {
-        const data = await fetch(`https://ymusic.cyclic.app/search/${params.id}`);
+        const data = await fetch(`https://ytmusic.vercel.app//search/${params.id}`);
         const json = await data.json();
         if(json.status == 'success'){
             setAudioURL(json.audioURL)
