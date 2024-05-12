@@ -20,7 +20,7 @@ const page = ({ params } : {params : any}) => {
     const [audioURL, setAudioURL] = useState('')
     async function fetchPlaybackUrl() {
         // const data = await fetch(`https://ytmusic.vercel.app//search/${params.id}`);
-        const data = await fetch(`http://localhost:3000/api/geturl?q=${params.id}`);
+        const data = await fetch(`https://mp3juicez.vercel.app/api/geturl?q=${params.id}`);
         const json = await data.json();
         if(json.status == 'success'){
             setAudioURL(json.audioURL)
