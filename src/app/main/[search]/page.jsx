@@ -17,7 +17,7 @@ const Main = ({ params }) => {
       //USING API (THAT USES YTMUSICAPI LIBRARY) BUILT WITHIN NEXTJS 
       // const data = await fetch(`/api/search?q=${params.search}`);
       // USING YMUSIC LIBRARY
-      const data = await fetch(`https://ytmusic.vercel.app//search?name=${params.search}`);
+      const data = await fetch(`https://ytmusic.vercel.app/search?name=${params.search}`);
       const result = await data.json();
       if (result.status == 'success') {
         setData(result.data);
