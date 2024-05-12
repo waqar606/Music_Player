@@ -134,16 +134,16 @@ const Main = ({ params }) => {
                   <div>
                     <button className='w-full p-3 border border-solid 
                     border-myPurple text-myPurple rounded font-bold hover:text-white hover:bg-myPurple'
-                      onClick={() => downloadAudio(element.videoId, element.title)}>Download</button>
+                      onClick={() => downloadAudio(element.id.videoId, element.snippet.title)}>Download</button>
                   </div>
                   <div className="flex items-center space-x-2">
-                    <a href={`/play/${element.videoId}?name=${element.title}&author=${element.channelTitle}`} target="_blank" className="text-white bg-black w-1/2 p-2 border border-solic 
+                    <a href={`/play/${element.id.videoId}?name=${element.snippet.title}&author=${element.snippet.channelTitle}`} target="_blank" className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black text-center">
                       Play
                     </a>
                     <button className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black"
-                      onClick={() => moreDownloadAudio(element.videoId, 0)}>More</button>
+                      onClick={() => moreDownloadAudio(element.id.videoId, 0)}>More</button>
                   </div>
                 </div>
               </div>
