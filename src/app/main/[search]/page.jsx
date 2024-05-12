@@ -19,7 +19,6 @@ const Main = ({ params }) => {
       // USING YMUSIC LIBRARY
       // const data = await fetch(`https://ytmusic.vercel.app/search?name=${params.search}`);
       try {
-        // const data = await fetch(`https://www.googleapis.com/youtube/v3/search?q=${params.search}&key=AIzaSyChrZ70P-sNP6WlmzbPdkiWQmWCj7b_7HE&part=snippet&type=video&maxResults=10`)
         const data = await fetch(`https://www.googleapis.com/youtube/v3/search?q=${params.search}&key=${process.env.customKey}&part=snippet&type=video&maxResults=10`)
         const result = await data.json();
         console.log(result.items);
