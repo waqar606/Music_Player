@@ -26,7 +26,6 @@ const Main = ({ params }:{params:any}) => {
       // USING YMUSIC LIBRARY
       // const data = await fetch(`https://ytmusic.vercel.app/search?name=${params.search}`);
       try {
-        // const data = await fetch(`https://www.googleapis.com/youtube/v3/search?q=${params.search}&key=AIzaSyChrZ70P-sNP6WlmzbPdkiWQmWCj7b_7HE&part=snippet&type=video&maxResults=10`)
         const data = await fetch(
           `https://www.googleapis.com/youtube/v3/search?q=${params.search}&key=${process.env.customKey}&part=snippet&type=video&maxResults=10`
         );
@@ -106,7 +105,7 @@ const Main = ({ params }:{params:any}) => {
   };
 
   return (
-    <>
+    <div onClick={handleClickFOrDropDown}>
       {popup ? (
         <div
           className="fixed z-2 overlay w-full h-full flex items-center justify-center"
@@ -172,9 +171,7 @@ const Main = ({ params }:{params:any}) => {
           <div
             className="container mt-4 px-16 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 rounded-md
     lg:gap-8
-    "
-            onClick={handleClickFOrDropDown}
-          >
+    "          >
             {dataG ? (
               dataG.map((element:any, index:number) => (
                 <div
@@ -249,7 +246,7 @@ const Main = ({ params }:{params:any}) => {
           Theres an issue with the app please try again later..
         </div>
       )}
-    </>
+    </div>
   );
 };
 
