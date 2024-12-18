@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Form from "@/components/Form";
 import MusicAnimation from "@/components/MusicAnimation";
 
-const Main = ({ params }:{params:any}) => {
+const Main = ({ params }: { params: any }) => {
   const [showSugg, setShowSugg] = useState(false);
   const [dataG, setData] = useState([]);
   const [url, setUrl] = useState("");
@@ -12,13 +12,14 @@ const Main = ({ params }:{params:any}) => {
   const [popup2, setPopup2] = useState(false);
   const [erro, setE] = useState(false);
   const [showThumbnail, setShowThumb] = useState<boolean>();
+  const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
     const savedVal = window.localStorage.getItem("showThumb");
     console.log(savedVal);
     setShowThumb(savedVal === "true");
   }, []);
-  
+
   useEffect(() => {
     const fetchResult = async () => {
       //USING API (THAT USES YTMUSICAPI LIBRARY) BUILT WITHIN NEXTJS
@@ -50,31 +51,62 @@ const Main = ({ params }:{params:any}) => {
     }
   }, [popup]);
 
-  function moreDownloadAudio(id:any, digit:any) {
-    const urlList = [
-      `https://www.yt2mp3s.me/api/widget?url=https://www.youtube.com/watch?v=${id}`,
-      `https://apidl.net/api/widget?url=https://www.youtube.com/watch?v=${id}`,
-    ];
-    setUrl(urlList[digit]);
-    setPopup(true);
-    const p = document.createElement("p");
-    p.classList.add("text-black", "mt-4", "ms-3", "me-3");
-    p.innerText = "Choose any download option (192kpbs recommended)";
-    const iframe = document.createElement("iframe");
-    iframe.src = url;
-    iframe.className = "w-full h-full";
-    // @ts-ignore
-    iframe.sandbox =
-      "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation allow-downloads";
-    const overContain = document.getElementById("overlay");
-    if (overContain) {
-      overContain.innerHTML = "";
-      overContain.append(p);
-      overContain.append(iframe);
+  // function moreDownloadAudio(id:any, digit:any) {
+  //   const urlList = [
+  //     `https://www.yt2mp3s.me/api/widget?url=https://www.youtube.com/watch?v=${id}`,
+  //     `https://apidl.net/api/widget?url=https://www.youtube.com/watch?v=${id}`,
+  //   ];
+  //   setUrl(urlList[digit]);
+  //   setPopup(true);
+  //   const p = document.createElement("p");
+  //   p.classList.add("text-black", "mt-4", "ms-3", "me-3");
+  //   p.innerText = "Choose any download option (192kpbs recommended)";
+  //   const iframe = document.createElement("iframe");
+  //   iframe.src = url;
+  //   iframe.className = "w-full h-full";
+  //   // @ts-ignore
+  //   iframe.sandbox =
+  //     "allow-forms allow-modals allow-pointer-lock allow-same-origin allow-scripts allow-top-navigation allow-downloads";
+  //   const overContain = document.getElementById("overlay");
+  //   if (overContain) {
+  //     overContain.innerHTML = "";
+  //     overContain.append(p);
+  //     overContain.append(iframe);
+  //   }
+  // }
+
+  async function moreDownloadAudio(id: any, title: any) {
+    try {
+      setLoading(true);
+
+      const response = await fetch(
+        `/api/getExternalUrl?id=${id}&title=${encodeURIComponent(title)}`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch the audio URL");
+      }
+
+      const data = await response.json();
+      console.log("Response data:", data);
+
+      if (data.audioURL) {
+        const a = document.createElement("a");
+        a.href = data.audioURL;
+        a.download = `${title}.mp3`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } else {
+        console.error("Download link not found in response");
+      }
+    } catch (error) {
+      console.error("Error in moreDownloadAudio:", error);
+    } finally {
+      setLoading(false);
     }
   }
 
-  async function downloadAudio(id:any, title:string) {
+  async function downloadAudio(id: any, title: string) {
     setPopup2(true);
     try {
       const response = await fetch(`/api/download?q=${id}`);
@@ -171,26 +203,31 @@ const Main = ({ params }:{params:any}) => {
           <div
             className="container mt-4 px-16 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 rounded-md
     lg:gap-8
-    "          >
+    "
+          >
             {dataG ? (
-              dataG.map((element:any, index:number) => (
+              dataG.map((element: any, index: number) => (
                 <div
                   key={element.id.videoId}
                   className="card bg-newGrey flex flex-col justify-between p-4"
                 >
                   <div>
                     <div className="">
-                      {showThumbnail ? <img
-                        src={
-                          element.snippet.thumbnails.high
-                            ? element.snippet.thumbnails.high.url
-                            : element.snippet.thumbnails.medium
-                            ? element.snippet.thumbnails.medium.url
-                            : element.snippet.thumbnails.default.url
-                        }
-                        alt="Image Preview Unavailable"
-                        className="rounded-md w-full text-white"
-                      /> : ''}
+                      {showThumbnail ? (
+                        <img
+                          src={
+                            element.snippet.thumbnails.high
+                              ? element.snippet.thumbnails.high.url
+                              : element.snippet.thumbnails.medium
+                              ? element.snippet.thumbnails.medium.url
+                              : element.snippet.thumbnails.default.url
+                          }
+                          alt="Image Preview Unavailable"
+                          className="rounded-md w-full text-white"
+                        />
+                      ) : (
+                        ""
+                      )}
                     </div>
                     <div>
                       <h1 className="text-white font-extrabold titleH1">
@@ -228,9 +265,14 @@ const Main = ({ params }:{params:any}) => {
                       <button
                         className="text-white bg-black w-1/2 p-2 border border-solic 
                     rounded hover:border-black hover:bg-white hover:text-black"
-                        onClick={() => moreDownloadAudio(element.id.videoId, 0)}
+                        onClick={() =>
+                          moreDownloadAudio(
+                            element.id.videoId,
+                            element.snippet.title
+                          )
+                        }
                       >
-                        More
+                        {loading ? "Loading" : "More"}
                       </button>
                     </div>
                   </div>
