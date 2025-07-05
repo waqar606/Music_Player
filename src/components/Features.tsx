@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeadphones, faHeadset, faPlay, faCode, faTablet } from '@fortawesome/free-solid-svg-icons';
 import { faHtml5 } from '@fortawesome/free-brands-svg-icons';
 
-const Features = ({setShowSugg}:{setShowSugg:any}) => {
+const Features = ({ setShowSugg }: { setShowSugg: any }) => {
     const dataG = [
         {
             icon: faHeadphones,
@@ -36,9 +36,9 @@ const Features = ({setShowSugg}:{setShowSugg:any}) => {
             para: 'The entire application is built on top of NextJS, typescript version, with properly integrating client side with server code and ytdl-core',
         },
     ];
-    
+
     return (
-        <section onClick={()=>{setShowSugg(false)}}>
+        <section onClick={() => { setShowSugg(false) }}>
             <div className='container mt-8 pb-24 px-16 mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 rounded-md
     lg:gap-8
     '>
