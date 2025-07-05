@@ -10,13 +10,13 @@ const Footer = () => {
         <div className="container mx-auto px-3">
             <div className="flex flex-col md:flex-row">
                 <div className="flex flex-col md:w-1/2">
-                    <p className="text-myGrey">© 2024 Huzaifa Inshal</p>
+                    <p className="text-myGrey">© 2024 Waqqar Ahmed</p>
                     <h1 className='text-white font-extrabold'>MP3JUICEZ</h1>
-                    <div className="flex">
+                    {/* <div className="flex">
                         <a className="" href='https://www.instagram.com/huzaifa_inshal/' target='_blank'><FontAwesomeIcon icon={faInstagram} style={{color: "white" }}/></a>
                         <a className="ms-3" target='_blank' href='https://www.linkedin.com/in/huzaifainshal/'><FontAwesomeIcon icon={faLinkedin} style={{color: "white" }}/></a>
                         <a className="ms-3" target='_blank' href='https://github.com/HuzaifaInshal'><FontAwesomeIcon icon={faGithub} style={{color: "white" }}/></a>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="flex justify-between text-myGrey mt-5 md:w-1/2 md:mt-0 md:justify-between">
                     <div className="flex flex-col w-1/3">
